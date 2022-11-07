@@ -12,7 +12,7 @@ function getLatestTS3Version() {
                 fi
 
                 while read release; do
-                        wget -t 1 -T 1 --spider -q "https://files.teamspeak-services.com/releases/server/${release}/teamspeak3-server_linux_amd64-${release}.tar.bz2"
+                        wget -t 1 -T 1 --spider -q "https://files.teamspeak-services.com/releases/server/${release}/teamspeak3-server_linux_x86-${release}.tar.bz2"
 
                         if [[ $? == 0 ]]; then
                                 TS3_SERVER_VERSION="$release"
@@ -40,16 +40,16 @@ if [[ -n "$TS3_SERVER_VERSION" ]] && [[ "$TS3_SERVER_VERSION" != "0" ]]; then
                 echo "No Update"
         else
                 echo "New Version $TS3_SERVER_VERSION"
-                wget -O ts3.tar.bz2 "https://files.teamspeak-services.com/releases/server/${TS3_SERVER_VERSION}/teamspeak3-server_linux_amd64-${TS3_SERVER_VERSION}.tar.bz2"
+                wget -O ts3.tar.bz2 "https://files.teamspeak-services.com/releases/server/${TS3_SERVER_VERSION}/teamspeak3-server_linux_x86-${TS3_SERVER_VERSION}.tar.bz2"
                 if [ $? -eq 0 ]; then
                         echo "Stop TS3"
 
-                        ./teamspeak3-server_linux_amd64/ts3server_startscript.sh stop
+                        ./teamspeak3-server_linux_x86/ts3server_startscript.sh stop
                         echo "Entpacke"
                         tar -xjf ts3.tar.bz2
                         
                         echo "Start TS3"
-                        ./teamspeak3-server_linux_amd64/ts3server_startscript.sh start
+                        ./teamspeak3-server_linux_x86/ts3server_startscript.sh start
                         
                         #Save Version
                         echo "$TS3_SERVER_VERSION" > $VERSION
