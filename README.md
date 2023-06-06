@@ -1,5 +1,6 @@
 # TS3-Update
 With this little script you can easily update your TS3 server automatically.
+Works with Exagear on Raspberry Pi.
 
 # Requirements
 Server running a linux x86 TS3 Server
